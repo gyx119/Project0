@@ -18,6 +18,9 @@ class Machine {
      *  upper-case letters. The first letter refers to the leftmost
      *  rotor setting.  */
     void setRotors(String setting) {
+    	//In this method we need to:
+    	//set the _setting to the letter it's currently on
+    	//set the _type to like "III" or "Beta" or something like that as a string
         // FIXME
     }
 

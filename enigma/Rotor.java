@@ -59,17 +59,38 @@ class Rotor {
 
     /** Returns true iff I am positioned to allow the rotor to my left
      *  to advance. */
-    boolean atNotch() {
-        return false; // FIXME
+    static boolean atNotch() {
+    	String setLetter = toLetter(_setting);
+    	String type = _type;
+    	int index = 0;
+    	while (index < ROTOR_SPECS.length) {
+    		if (ROTOR_SPECS[index][0] == type) {
+    			if (ROTOR_SPECS[index][ROTOR_SPECS[index].length - 1] == setLetter) {
+    				return true;
+    			}
+    			return false;
+    		}
+    		index += 1;
+    	}
+    	return false;
     }
 
     /** Advance me one position. */
     void advance() {
-        // FIXME
+    	if (_setting == 25){
+    		set(0);
+    	} else {
+        set(_setting + 1);
     }
 
     /** My current setting (index 0..25, with 0 indicating that 'A'
      *  is showing). */
     private int _setting;
+    
+    
+    /** My rotor type, like "Beta" or "III" or something
+     * -Evan
+     */
+    private int _type;
 
 }
