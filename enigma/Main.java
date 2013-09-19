@@ -67,7 +67,13 @@ public final class Main {
      *  removing all blanks and tabs.  It is an error if LINE contains
      *  characters other than letters and blanks. */
     private static String standardize(String line) {
-        return line; // FIXME
+        if (line.contains("^[A-z]")) {
+            throw new IllegalArgumentException("Contains non-allowed characters");
+    	}
+        String noblank = line.replaceAll("\\s", "");
+        String upper = noblank.toUpperCase();
+        return upper; 
+        }
     }
 
     /** Print MSG in groups of five (except that the last group may
