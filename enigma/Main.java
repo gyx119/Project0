@@ -46,7 +46,15 @@ public final class Main {
 
     /** Return true iff LINE is an Enigma configuration line. */
     private static boolean isConfigurationLine(String line) {
-        return false; // FIXME
+    char[] line1 = line.toCharArray();
+	    int tracker = 0;
+	    	while (tracker < line1.length) {
+	    		if (Character.isUpperCase(line1[tracker])) {
+	    			tracker++;
+	    		}
+	    		return false;
+	    	}
+	    return true;
     }
 
     /** Configure M according to the specification given on CONFIG,
