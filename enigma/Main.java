@@ -66,14 +66,16 @@ public final class Main {
     /** Return the result of converting LINE to all upper case,
      *  removing all blanks and tabs.  It is an error if LINE contains
      *  characters other than letters and blanks. */
-    private static String standardize(String line) {
-        if (line.contains("^[A-z]")) {
-            throw new IllegalArgumentException("Contains non-allowed characters");
+      private static String standardize(String line) {
+     	String noblank = line.replaceAll("\\s", "");
+     	Pattern pattern = Pattern.compile("[^A-Za-z]");
+		Matcher m = pattern.matcher(line);
+		boolean t = m.find(0);
+    	if (t){
+    		throw new IllegalArgumentException("Contains non-allowed characters");
     	}
-        String noblank = line.replaceAll("\\s", "");
-        String upper = noblank.toUpperCase();
+    	String upper = noblank.toUpperCase();
         return upper; 
-        }
     }
 
     /** Print MSG in groups of five (except that the last group may
