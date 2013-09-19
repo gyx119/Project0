@@ -9,17 +9,18 @@ class Rotor {
 
     /** Size of alphabet used for plaintext and ciphertext. */
     static final int ALPHABET_SIZE = 26;
+        static final char[] alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".toCharArray();
 
     /** Assuming that P is an integer in the range 0..25, returns the
      *  corresponding upper-case letter in the range A..Z. */
     static char toLetter(int p) {
-        return 'A';  // FIXME
+    	return alphabet[p];
     }
 
     /** Assuming that C is an upper-case letter in the range A-Z, return the
      *  corresponding index in the range 0..25. Inverse of toLetter. */
     static int toIndex(char c) {
-        return 0;  // FIXME
+        return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf('c');
     }
 
     /** Returns true iff this rotor has a ratchet and can advance. */
