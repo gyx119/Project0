@@ -44,16 +44,53 @@ public final class Main {
         }
     }
 
+    /** Return true iff string s is all uppercase letters. */
+    public static boolean isUpperCase(String s) {
+    	for (int i = 0;i < s.length();i++) {
+    		if (Character.isLowerCase(s.charAt(i))) {
+    			return false;
+    		}
+    	}
+    	return true;
+    }
+
     /** Return true iff LINE is an Enigma configuration line. */
     private static boolean isConfigurationLine(String line) {
-    char[] line1 = line.toCharArray();
-	    int tracker = 0;
-	    	while (tracker < line1.length) {
-	    		if (Character.isUpperCase(line1[tracker])) {
-	    			tracker++;
-	    		}
-	    		return false;
-	    	}
+    	String[] parts = line.split(" ");
+    	int tracker = 7;
+    	if (parts[0] != "*") {
+    		return false;
+    	}
+    	if (parts[1] != "B" && parts[1] != "C") {
+    		return false;
+    	}
+    	if (parts[2] != "BETA" && parts[2] != "GAMMA") {
+    		return false;
+    	}
+    	if (parts[3] != "I" || parts[3] != "II" || parts[3] !="III" 
+    			|| parts[3] != "IV" || parts[3] != "V" || parts[3] != "VI" 
+    			|| parts[3] != "VII" || parts[3] != "VIII") {
+    		return false;
+    	}
+    	if (parts[4] != "I" || parts[4] != "II" || parts[4] !="III" 
+    			|| parts[4] != "IV" || parts[4] != "V" || parts[4] != "VI" 
+    			|| parts[4] != "VII" || parts[4] != "VIII" 
+    			|| parts[4] == parts[3] ) {
+    		return false;
+    	}
+    	if (parts[5] != "I" || parts[5] != "II" || parts[5] !="III" 
+    			|| parts[5] != "IV" || parts[5] != "V" || parts[5] != "VI" 
+    			|| parts[5] != "VII" || parts[5] != "VIII" 
+    			|| parts[5] == parts[3] || parts[5] == parts[4]) {
+    		return false;
+    	}
+	    while (tracker < parts.length) {
+	   		if (isUpperCase(parts[tracker])) {
+	   			tracker++;
+	   		} else {
+	   			return false;
+    		}
+    	}
 	    return true;
     }
 
