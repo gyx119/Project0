@@ -23,14 +23,27 @@ class Rotor {
         return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf('c');
     }
 
+    /** Returns the string of the type of the rotor. */
+    public String type() {
+    	return _type;
+    }
+
     /** Returns true iff this rotor has a ratchet and can advance. */
     boolean advances() {
-        return true;
+        if (this.type.equals("I") || this.type.equals("II") || this.type.equals("III") 
+    			|| this.type.equals("IV") || this.type.equals("V") || this.type.equals("VI") 
+    			|| this.type.equals("VII") || this.type.equals("VIII")) {
+    		return true;
+    	}
+    	return false;
     }
 
     /** Returns true iff this rotor has a left-to-right inverse. */
     boolean hasInverse() {
-        return true;
+        if (advances() || this.type.equals("BETA") || this.type.equals("GAMMA")) {
+    		return true;
+    	}
+    	return false;
     }
 
     /** Return my current rotational setting as an integer between 0
