@@ -30,9 +30,9 @@ class Rotor {
 
     /** Returns true iff this rotor has a ratchet and can advance. */
     boolean advances() {
-        if (this.type.equals("I") || this.type.equals("II") || this.type.equals("III") 
-    			|| this.type.equals("IV") || this.type.equals("V") || this.type.equals("VI") 
-    			|| this.type.equals("VII") || this.type.equals("VIII")) {
+        if (this.type().equals("I") || this.type().equals("II") || this.type().equals("III") 
+    			|| this.type().equals("IV") || this.type().equals("V") || this.type().equals("VI") 
+    			|| this.type().equals("VII") || this.type().equals("VIII")) {
     		return true;
     	}
     	return false;
@@ -40,7 +40,7 @@ class Rotor {
 
     /** Returns true iff this rotor has a left-to-right inverse. */
     boolean hasInverse() {
-        if (advances() || this.type.equals("BETA") || this.type.equals("GAMMA")) {
+        if (advances() || this.type().equals("BETA") || this.type().equals("GAMMA")) {
     		return true;
     	}
     	return false;
